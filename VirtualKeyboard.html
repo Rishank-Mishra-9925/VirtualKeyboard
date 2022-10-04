@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+
+
+<head>
+
+    <title>Virtual Keyboard</title>
+    <style>
+        /* Element Selector */
+        button {
+            width: 64px;
+            height: 64px;
+            background-color: black;
+            border-radius: 10px;
+            color: white;
+            font-size: 32px;
+            margin: 10px;
+        }
+
+        /* Class Selector */
+        .Keys_row {
+            text-align: center;
+        }
+
+        .Large_btn {
+            width: 350px;
+        }
+
+        /* Id Selector */
+        #Keys_output {
+            background-color: rgb(235, 233, 159);
+            border: 2px solid red;
+            border-radius: 5px;
+            margin: 20px;
+            font-size: 48px;
+            color: rgb(99, 35, 35);
+            text-align: center;
+        }
+
+        #keyboard{
+            margin: 20px;
+             border:2px solid black;
+             border-radius: 10px;
+             background-color: rgb(170, 249, 255);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="keyboard">
+
+        <div id="Keys_output">
+            Press The Buttons To Enter Here
+        </div>
+
+        <div class="Keys_row">
+            <button onclick="button_clicked('1')">1</button>
+            <button onclick="button_clicked('2')">2</button>
+            <button onclick="button_clicked('3')">3</button>
+            <button onclick="button_clicked('4')">4</button>
+            <button onclick="button_clicked('5')">5</button>
+            <button onclick="button_clicked('6')">6</button>
+            <button onclick="button_clicked('7')">7</button>
+            <button onclick="button_clicked('8')">8</button>
+            <button onclick="button_clicked('9')">9</button>
+            <button onclick="button_clicked('0')">0</button>
+        </div>
+
+        <div class="Keys_row">
+            <button onclick="button_clicked('Q')">Q</button>
+            <button onclick="button_clicked('W')">W</button>
+            <button onclick="button_clicked('E')">E</button>
+            <button onclick="button_clicked('R')">R</button>
+            <button onclick="button_clicked('T')">T</button>
+            <button onclick="button_clicked('Y')">Y</button>
+            <button onclick="button_clicked('U')">U</button>
+            <button onclick="button_clicked('I')">I</button>
+            <button onclick="button_clicked('O')">O</button>
+            <button onclick="button_clicked('P')">P</button>
+        </div>
+
+        <div class="Keys_row">
+            <button onclick="button_clicked('A')">A</button>
+            <button onclick="button_clicked('S')">S</button>
+            <button onclick="button_clicked('D')">D</button>
+            <button onclick="button_clicked('F')">F</button>
+            <button onclick="button_clicked('G')">G</button>
+            <button onclick="button_clicked('H')">H</button>
+            <button onclick="button_clicked('J')">J</button>
+            <button onclick="button_clicked('K')">K</button>
+            <button onclick="button_clicked('L')">L</button>
+        </div>
+
+        <div class="Keys_row">
+            <button onclick="caps_clicked()" id="caps_btn" style="width: 110px;">^_ON</button>
+            <!--CapsLock Button-->
+            <button onclick="button_clicked('Z')">Z</button>
+            <button onclick="button_clicked('X')">X</button>
+            <button onclick="button_clicked('C')">C</button>
+            <button onclick="button_clicked('V')">V</button>
+            <button onclick="button_clicked('B')">B</button>
+            <button onclick="button_clicked('N')">N</button>
+            <button onclick="button_clicked('M')">M</button>
+        </div>
+
+        <div class="Keys_row">
+
+            <button onclick="button_clicked(' ')" class="Large_btn">SPACE</button>
+            <!--Space Button-->
+            <button onclick="clear_clicked()" class="Large_btn" id="clear_btn">CLEAR</button>
+            <!--Clear Button-->
+        </div>
+
+       
+        <script>
+
+            //Global Scope of variable
+            var output_text = "";
+            var caps = true;     //Boolean Data type
+
+            function button_clicked(character) {
+
+                if (caps) {
+                    output_text = output_text + character;
+                } else {
+                    var lower_character = character.toLowerCase();           //Pre-defined Function that Converts UpperCase into LowerCase Letters
+                    output_text = output_text + lower_character;
+                }
+
+                var output = document.getElementById("Keys_output");      //getting the div with id into the output variable
+                output.textContent = output_text;         //Changing the content of div with id
+            }
+
+
+            // For CapsLock
+            function caps_clicked() {
+                var caps_btn = document.getElementById("caps_btn");
+                if (caps) {
+                    caps_btn.textContent = "^_OFF";
+                    caps = false;
+                } else {
+                    caps_btn.textContent = "^_ON";
+                    caps = true;
+                }
+
+            }
+
+            // For Clear Button
+            function clear_clicked() {
+
+                output_text = " ";
+                var output = document.getElementById("Keys_output");
+                output.textContent = "Press The Buttons To Enter Here";
+
+            }
+        </script>
+    </div>
+
+</body>
+
+</html>
